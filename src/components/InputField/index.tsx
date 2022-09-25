@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, { Dispatch, useRef } from 'react';
 import './styles.css';
 
 interface Props {
@@ -12,9 +12,17 @@ const InputField: React.FC<Props> = ({
     setTodo,
     handleAdd
 }) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const handleSubmit = (e: React.FormEvent) => {
+        handleAdd(e);
+        inputRef.current?.blur();
+    }
+
     return (
-        <form className="input" onSubmit={handleAdd}>
+        <form className="input" onSubmit={handleSubmit}>
             <input 
+                ref={inputRef}
                 type="input" 
                 placeholder="Enter a text" 
                 className="input__box" 
