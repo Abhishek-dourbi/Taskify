@@ -34,3 +34,7 @@
         width: 95%;
     }
 }
+
+.drag {
+    box-shadow: 0 0 20px black;
+}
